@@ -15,7 +15,7 @@ describe('Funcionalidade Página de produtos', () => {
             .click()
     });
 
-    it.only('Deve adicionar um produto ao carrinho', () => {
+    it('Deve adicionar um produto ao carrinho', () => {
         var quantidade = 3
 
         cy.get('[class="product-block grid"]')
@@ -29,6 +29,14 @@ describe('Funcionalidade Página de produtos', () => {
         cy.get('.sub-title > .woocommerce-Price-amount > bdi').should('contain' , 'R$117,00')
                 
 
+    });
+
+    it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
+        cy.addprodutos('Aero Daily Fitness Tee', 'S', 'Black', 2)
+    });
+
+    it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
+        cy.addprodutos('Ariel Roll Sleeve Sweatshirt', 'XS', 'Red', 5)
     });
 
 });
