@@ -3,7 +3,7 @@
 describe('Funcionalidade Página de produtos', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('produtos/')
     });
 
     it('Deve selecionar um produto da lista', () => {
@@ -21,12 +21,12 @@ describe('Funcionalidade Página de produtos', () => {
         cy.get('[class="product-block grid"]')
             .contains('Ariel Roll Sleeve Sweatshirt').click()
         cy.get('.button-variable-item-L').click()
-        cy.get('.button-variable-item-Purple').click()
+        cy.get('.button-variable-item-Green').click()
         cy.get('.input-text').clear().type(quantidade)
         cy.get('.single_add_to_cart_button').click()
 
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , quantidade)
-        cy.get('.woocommerce-message').should('contain' , quantidade + ' x "Ariel Roll Sleeve Sweatshirt” foi adicionado no seu carrinho.')
+        cy.get('.sub-title > .woocommerce-Price-amount > bdi').should('contain' , 'R$117,00')
                 
 
     });
